@@ -4,7 +4,7 @@ I am excited to share with you the solution I have developed for the task at han
 
 **Project Overview** 📂
 
-To tackle this task, I created a simple web application using PHP, JavaScript, and CSS to display data dynamically fetched from a remote API. The application ensures that the information stays up-to-date, is easily searchable, and is presented in a user-friendly format.
+To tackle this task, I created a simple web page using PHP, JavaScript, and CSS to display data dynamically from a remote API. The web page ensures that the information stays up-to-date, is easily searchable, and is presented in a user-friendly format.
 
 **Process and Steps** ⚙
 
