@@ -1,69 +1,36 @@
-Hello dear web portal dev prospect!
+Dear Hiring Team,
 
-This repository is a playground for your submission which should use PHP in the backend and HTML/JS in the frontend.
+I am excited to share with you the solution I have developed for the task at hand. Below, I’ll describe the process and steps I followed to build the project, providing insight into how I approached the problem and the technologies I used.
 
-Before getting started, please hit the `Use this template` button to create a new repository on which you commit and push your code regularly for the task below. Once you are done, please mail us the link to your repository.
+**Project Overview** 📂
 
-Good luck and have fun ☘️
+To tackle this task, I created a simple web application using PHP, JavaScript, and CSS to display data dynamically fetched from a remote API. The application ensures that the information stays up-to-date, is easily searchable, and is presented in a user-friendly format.
 
-# Task
+**Process and Steps** ⚙
 
-Develop a web page that connects to a remote API, downloads a dataset, displays a table with the downloaded dataset, and provides some basic search and filter functions.
+The project consists of four key files:
 
-In particular, the web page should:
+**api.php**
 
-- Request the data located at `https://api.baubuddy.de/dev/index.php/v1/tasks/select` from PHP
-- Display the downloaded data in a table showing `task`, `title`, `description` and `colorCode`. The displayed HTML element for the `colorCode` should have its color set accordingly
-- Create a search which allows searching for any of the data in the table
-- Implement auto-refresh functionality which requests the data from above every 60 minutes and updates the table with the new data without reloading the web page. The data should be fetched via PHP
-- Outside the table, create a button that opens a modal. In this modal, there should be another button that allows you to select any image from the file system. When you have selected the image, it will be displayed in the modal
-  - Note that this is not linked to the data from above
+I started by creating the api.php file, which is responsible for connecting to the API and downloading a dataset. To enhance the usability of the project, I ensured that if any data fetched is null or unavailable, the color of the corresponding field is set to white. This improves the clarity of the interface when data is missing.
 
-# Authorization
+**index.php**
 
-It is mandatory that your requests to the API are authorized. You can find the required request below:
+In the index.php file, I created the structure of the page, which includes a table to display the dataset. Additionally, I included a search field to allow users to filter through the data and a modal button as required.
 
-This is how it looks in `curl`:
+**script.js**
 
-```bash
-curl --request POST \
-  --url https://api.baubuddy.de/index.php/login \
-  --header 'Authorization: Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz' \
-  --header 'Content-Type: application/json' \
-  --data '{
-        "username":"365",
-        "password":"1"
-}'
-```
+For the frontend functionality, I added a script.js file. This file includes the JavaScript logic to handle interactions, such as the search functionality, as well as a key feature that ensures the page auto-refreshes every 60 minutes. To ensure this feature works as expected, I added console logs to test and confirm that the refresh happens correctly, and the data is updated every hour (I already test it with 60 seconds).
 
-The response will contain a JSON object, having the access token in `json["oauth"]["access_token"]`. For all subsequent calls this has to be added to the request headers as `Authorization: Bearer {access_token}`.
+**style.css**
 
-A possible implementation in `PHP` could be the following. You don't have to adopt this, you can also customize it or use another network library.
+Finally, I designed the application’s look and feel with style.css. The goal was to make the user experience smooth and visually appealing. The styling ensures that the table and other components are presented in a clean, responsive layout.
 
-```php
-<?php
-$curl = curl_init();
-curl_setopt_array($curl, [
-  CURLOPT_URL => "https://api.baubuddy.de/index.php/login",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "POST",
-  CURLOPT_POSTFIELDS => "{\"username\":\"365\", \"password\":\"1\"}",
-  CURLOPT_HTTPHEADER => [
-    "Authorization: Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
-    "Content-Type: application/json"
-  ],
-]);
-$response = curl_exec($curl);
-$err = curl_error($curl);
-curl_close($curl);
-if ($err) {
-  echo "cURL Error #:" . $err;
-} else {
-  echo $response;
-}
-?>
-```
+**Resume** 🌟
+
+The web page connects to a remote API, downloads a dataset, displays a table with the downloaded dataset.
+A search field is included to filter the displayed data.
+The page auto-refreshes every 60 minutes to ensure up-to-date data is always available.
+A clean and user-friendly design that enhances usability.
+
+I hope this solution meets the task requirements effectively.
